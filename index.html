@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Business Guide</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .loading-page {
+            text-align: center;
+            animation: fadeIn 2s;
+        }
+        .loading-page h1 {
+            font-size: 2.5rem;
+        }
+        .loading-page p {
+            margin-top: 20px;
+            font-size: 1rem;
+        }
+        .content {
+            display: none;
+            text-align: center;
+            animation: fadeIn 1s;
+        }
+        .buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .button {
+            background-color: #1f1f1f;
+            color: #ffffff;
+            border: 1px solid #ffffff;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: transform 0.3s;
+        }
+        .button:hover {
+            background-color: #282828;
+            transform: scale(1.1);
+        }
+        .info {
+            margin-top: 20px;
+            max-width: 800px;
+            text-align: left;
+            line-height: 1.6;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                document.querySelector('.loading-page').style.display = 'none';
+                document.querySelector('.content').style.display = 'block';
+            }, 2000);
+        });
+
+        function showInfo(business) {
+            const info = {
+                dropshipping: `<strong>Dropshipping:</strong><br>Dropshipping is an innovative e-commerce model that allows entrepreneurs to sell products without maintaining physical inventory. Instead, you collaborate with suppliers who handle storage, packaging, and shipping directly to customers. <br><br>
+                <strong>How It Works:</strong> You begin by setting up an online store through platforms like <a href='https://www.shopify.com' target='_blank'>Shopify</a> or <a href='https://www.woocommerce.com' target='_blank'>WooCommerce</a>. Then, you source products from suppliers using platforms such as <a href='https://www.aliexpress.com' target='_blank'>AliExpress</a>, <a href='https://www.cjdropshipping.com' target='_blank'>CJ Dropshipping</a>, or Oberlo. When a customer places an order, the supplier fulfills it on your behalf, allowing you to focus on marketing and customer service.<br><br>
+                <strong>Benefits:</strong> Dropshipping offers low startup costs since there’s no need to invest in inventory. It’s also scalable, with minimal overhead. Entrepreneurs can test new products and niches with ease.<br><br>
+                <strong>Challenges:</strong> Profit margins can be thin due to competition, and supplier reliability is crucial. Effective communication with suppliers and thorough market research can mitigate these risks.<br><br>
+                <strong>Getting Started:</strong> Focus on niche products, optimize your website for user experience, and leverage advertising tools like Facebook Ads or Google Ads. Use analytics tools like Google Analytics to track performance and adjust your strategy.`,
+                
+                print_on_demand: `<strong>Print on Demand (POD):</strong><br>POD is a creative e-commerce model where you sell custom-designed products without maintaining inventory. Popular items include t-shirts, mugs, tote bags, and phone cases. <br><br>
+                <strong>How It Works:</strong> Create unique designs using tools like Canva or Adobe Illustrator. Then, integrate your online store with platforms like <a href='https://www.printful.com' target='_blank'>Printful</a>, <a href='https://www.redbubble.com' target='_blank'>Redbubble</a>, or <a href='https://www.teespring.com' target='_blank'>Teespring</a>. When customers purchase a product, it is produced and shipped by the POD provider.<br><br>
+                <strong>Benefits:</strong> No upfront costs for inventory and unlimited customization options. POD is ideal for artists, designers, and influencers looking to monetize their creativity.<br><br>
+                <strong>Challenges:</strong> Profit margins depend on pricing strategies and shipping costs. Delivery times can also be longer compared to traditional e-commerce models.<br><br>
+                <strong>Getting Started:</strong> Identify a target audience, such as pet lovers or fitness enthusiasts. Create designs that resonate with your niche and use social media platforms to market your products. Collaborate with influencers to amplify your reach.`,
+                
+                freelancing: `<strong>Freelancing:</strong><br>Freelancing involves offering professional services to clients on a project basis. It’s a versatile way to monetize skills like writing, graphic design, programming, or digital marketing. <br><br>
+                <strong>How It Works:</strong> Start by identifying your skillset and creating a portfolio to showcase your work. Platforms like <a href='https://www.upwork.com' target='_blank'>Upwork</a>, <a href='https://www.fiverr.com' target='_blank'>Fiverr</a>, and <a href='https://www.freelancer.com' target='_blank'>Freelancer</a> connect freelancers with clients. Set competitive rates and apply for projects that align with your expertise.<br><br>
+                <strong>Benefits:</strong> Freelancing offers flexibility in choosing projects, working hours, and location. It allows for diverse income streams and skill enhancement.<br><br>
+                <strong>Challenges:</strong> Consistent work can be a challenge, especially for beginners. Effective communication and time management are critical.<br><br>
+                <strong>Getting Started:</strong> Build a professional profile, network on LinkedIn, and attend virtual events. Use tools like Trello or Asana for project management and Clockify for time tracking. Gradually increase your rates as you gain experience and positive client reviews.`,
+                
+                social_media_marketing: `<strong>Social Media Marketing (SMM):</strong><br>SMM involves promoting brands and products on social platforms like Facebook, Instagram, TikTok, and LinkedIn to engage audiences and drive sales. <br><br>
+                <strong>How It Works:</strong> Social media marketers create and schedule content, run targeted ad campaigns, and analyze performance metrics. Tools like <a href='https://www.hootsuite.com' target='_blank'>Hootsuite</a>, <a href='https://www.buffer.com' target='_blank'>Buffer</a>, and <a href='https://www.canva.com' target='_blank'>Canva</a> simplify these tasks.<br><br>
+                <strong>Benefits:</strong> SMM offers a high return on investment and helps build brand loyalty. It’s an excellent option for businesses aiming to connect with younger, tech-savvy audiences.<br><br>
+                <strong>Challenges:</strong> Staying updated with platform algorithms and trends requires ongoing effort. Measuring the ROI of campaigns can also be complex.<br><br>
+                <strong>Getting Started:</strong> Learn the basics of digital marketing through courses on Coursera or HubSpot Academy. Build a portfolio by managing social media for friends or small businesses. Stay consistent in posting valuable content and engaging with followers. Collaborate with influencers to expand reach.`
+            };
+
+            const infoDiv = document.getElementById('info');
+            infoDiv.style.opacity = 0;
+            setTimeout(() => {
+                infoDiv.innerHTML = info[business] || '';
+                infoDiv.style.opacity = 1;
+            }, 300);
+        }
+    </script>
+</head>
+<body>
+    <!-- Loading Page -->
+    <div class="loading-page">
+        <h1>How To Start Online Business</h1>
+        <p>Created By BHOJ RAJ BHANDARI</p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+        <h1>Choose Your Business Type</h1>
+        <div class="buttons">
+            <button class="button" onclick="showInfo('dropshipping')">Dropshipping</button>
+            <button class="button" onclick="showInfo('print_on_demand')">Print on Demand</button>
+            <button class="button" onclick="showInfo('freelancing')">Freelancing</button>
+            <button class="button" onclick="showInfo('social_media_marketing')">Social Media Marketing</button>
+        </div>
+        <div id="info" class="info"></div>
+    </div>
+</body>
+</html>
